@@ -48,7 +48,7 @@ def unicode_to_discord(emoji: str, get_all=False):
     emoji : str
         Emoji to get name.
     get_all : bool, optional
-        [description], by default False
+        Whether get all emoji names, by default False
 
     Returns
     -------
