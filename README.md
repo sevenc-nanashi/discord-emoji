@@ -8,7 +8,7 @@ pip install discord-emoji
 
 ## Usage
 
-```python-repl
+```python
 >>> import discord_emoji
 >>> discord_emoji.discord_to_unicode("thinking")
 '🤔'
