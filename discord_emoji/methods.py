@@ -27,7 +27,7 @@ def discord_to_unicode(name: str) -> Optional[str]:
 
 
 @overload
-def unicode_to_discord(emoji: ..., get_all: True) -> Optional[List[str]]:
+def unicode_to_discord(emoji: ..., get_all: True) -> List[str]:
     pass
 
 
@@ -38,7 +38,7 @@ def unicode_to_discord(emoji: ..., get_all: False) -> Optional[str]:
 
 def unicode_to_discord(emoji: str, get_all=False):
     """Get discord emoji name from unicode emoji.
-    Returns None if couldn't find emoji.
+    Returns None or empty list if couldn't find emoji.
 
     Parameters
     ----------
@@ -52,15 +52,13 @@ def unicode_to_discord(emoji: str, get_all=False):
     name : Union[str, List[str]]
         Name of the found emoji.
         If get_all is True, it will return list.
-
-    Raises
-    ------
-    ValueError
-        Raises when it isn't emoji, or it isn't supported.
     """
     res = UNICODE_TO_DISCORD.get(emoji)
     if res is None:
-        raise ValueError(f"{emoji} is not emoji, or not supported.")
+        if get_all:
+            return None
+        else:
+            return []
     else:
         if get_all:
             return res
