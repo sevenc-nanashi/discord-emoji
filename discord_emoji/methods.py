@@ -1,10 +1,11 @@
-from typing import List, overload
+from typing import List, Optional, overload
 
 from .table import DISCORD_TO_UNICODE, UNICODE_TO_DISCORD
 
 
-def discord_to_unicode(name: str) -> str:
+def discord_to_unicode(name: str) -> Optional[str]:
     """Get unicode emoji from discord name.
+    Returns None if couldn't find emoji.
 
     Parameters
     ----------
@@ -16,11 +17,6 @@ def discord_to_unicode(name: str) -> str:
     -------
     emoji : str
         The found emoji.
-
-    Raises
-    ------
-    ValueError
-        Raises when it couldn't find emoji.
     """
     real_name = name.strip(":")
     res = DISCORD_TO_UNICODE.get(real_name)
@@ -31,17 +27,18 @@ def discord_to_unicode(name: str) -> str:
 
 
 @overload
-def unicode_to_discord(emoji: ..., get_all: True) -> List[str]:
+def unicode_to_discord(emoji: ..., get_all: True) -> Optional[List[str]]:
     pass
 
 
 @overload
-def unicode_to_discord(emoji: ..., get_all: False) -> str:
+def unicode_to_discord(emoji: ..., get_all: False) -> Optional[str]:
     pass
 
 
 def unicode_to_discord(emoji: str, get_all=False):
     """Get discord emoji name from unicode emoji.
+    Returns None if couldn't find emoji.
 
     Parameters
     ----------
