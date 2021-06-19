@@ -27,16 +27,16 @@ def discord_to_unicode(name: str) -> Optional[str]:
 
 
 @overload
-def unicode_to_discord(emoji: ..., get_all: True) -> List[str]:
+def unicode_to_discord(emoji: ..., get_all: True, put_colons: ...) -> List[str]:
     pass
 
 
 @overload
-def unicode_to_discord(emoji: ..., get_all: False) -> Optional[str]:
+def unicode_to_discord(emoji: ..., get_all: False, put_colons: ...) -> Optional[str]:
     pass
 
 
-def unicode_to_discord(emoji: str, get_all=False):
+def unicode_to_discord(emoji: str, get_all: bool = False, put_colons: bool = False):
     """Get discord emoji name from unicode emoji.
     Returns None or empty list if couldn't find emoji.
 
@@ -46,6 +46,8 @@ def unicode_to_discord(emoji: str, get_all=False):
         Emoji to get name.
     get_all : bool, optional
         Whether get all emoji names, by default False
+    put_colons : bool, optional
+        Whether put colons to names.
 
     Returns
     -------
@@ -60,6 +62,8 @@ def unicode_to_discord(emoji: str, get_all=False):
         else:
             return []
     else:
+        if put_colons:
+            res = [f":{name}:" for name in res]
         if get_all:
             return res
         else:
