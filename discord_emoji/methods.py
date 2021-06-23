@@ -3,7 +3,7 @@ from typing import List, Optional, overload
 from .table import DISCORD_TO_UNICODE, UNICODE_TO_DISCORD
 
 
-def discord_to_unicode(name: str) -> Optional[str]:
+def to_unicode(name: str) -> Optional[str]:
     """Get unicode emoji from discord name.
     Returns None if couldn't find emoji.
 
@@ -27,16 +27,16 @@ def discord_to_unicode(name: str) -> Optional[str]:
 
 
 @overload
-def unicode_to_discord(emoji: ..., get_all: True, put_colons: ...) -> List[str]:
+def to_discord(emoji: ..., get_all: True, put_colons: ...) -> List[str]:
     pass
 
 
 @overload
-def unicode_to_discord(emoji: ..., get_all: False, put_colons: ...) -> Optional[str]:
+def to_discord(emoji: ..., get_all: False, put_colons: ...) -> Optional[str]:
     pass
 
 
-def unicode_to_discord(emoji: str, get_all: bool = False, put_colons: bool = False):
+def to_discord(emoji: str, get_all: bool = False, put_colons: bool = False):
     """Get discord emoji name from unicode emoji.
     Returns None or empty list if couldn't find emoji.
 
