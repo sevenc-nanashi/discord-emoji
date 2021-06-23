@@ -20,10 +20,7 @@ def to_unicode(name: str) -> Optional[str]:
     """
     real_name = name.strip(":")
     res = DISCORD_TO_UNICODE.get(real_name)
-    if res is None:
-        raise ValueError(f"Couldn't find emoji that named {real_name}.")
-    else:
-        return res
+    return res
 
 
 @overload
