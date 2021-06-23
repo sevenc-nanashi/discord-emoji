@@ -65,3 +65,43 @@ def to_discord(emoji: str, get_all: bool = False, put_colons: bool = False):
             return res
         else:
             return res[0]
+
+
+def to_discord_multi(base: str) -> str:
+    """Replaces unicode emoji to discord name with colons.
+
+    Parameters
+    ----------
+    base : str
+        String to convert.
+
+    Returns
+    -------
+    str
+        Converted string.
+    """
+    res = base
+    for unicode_char, discord_name in UNICODE_TO_DISCORD.items():
+        res = res.replace(unicode_char, f":{discord_name[0]}:")
+
+    return res
+
+
+def to_unicode_multi(base: str) -> str:
+    """Replaces discord name with colons to unicode emoji.
+
+    Parameters
+    ----------
+    base : str
+        String to convert.
+
+    Returns
+    -------
+    str
+        Converted string.
+    """
+    res = base
+    for discord_name, unicode_char in DISCORD_TO_UNICODE.items():
+        res = res.replace(f":{discord_name}:", unicode_char)
+
+    return res
