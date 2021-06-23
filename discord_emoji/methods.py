@@ -55,9 +55,9 @@ def to_discord(emoji: str, get_all: bool = False, put_colons: bool = False):
     res = UNICODE_TO_DISCORD.get(emoji)
     if res is None:
         if get_all:
-            return None
-        else:
             return []
+        else:
+            return None
     else:
         if put_colons:
             res = [f":{name}:" for name in res]
