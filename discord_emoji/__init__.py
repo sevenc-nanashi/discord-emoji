@@ -4,4 +4,4 @@ unicode_to_discord = to_discord
 discord_to_uni = to_unicode
 unicode_to_dis = to_discord
 
-__version__ = "1.2.0"
+__version__ = "1.3.0"
