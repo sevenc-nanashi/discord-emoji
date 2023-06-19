@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "discord-emoji"
-version = "1.4.1"
+version = "1.4.2"
 description = "Converter between discord emoji and unicode emoji."
 authors = ["sevenc-nanashi <sevenc7c@sevenc7c.com>"]
 license = "MIT"
